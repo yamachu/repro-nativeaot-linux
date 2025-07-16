@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="NativeLibrary/NativeLibrary.csproj" />
+  <Project Path="NativeLibraryDependency/NativeLibraryDependency.csproj" />
+  <Project Path="Runner/Runner.csproj" />
+</Solution>
