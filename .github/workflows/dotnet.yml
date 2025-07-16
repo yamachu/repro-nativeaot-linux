@@ -11,11 +11,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runner:
-          - os: ubuntu-latest
-          - os: windows-latest
-          - os: macos-latest
-    runs-on: ${{ matrix.runner.os }}
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        target:
+          - net8.0
+          - net9.0
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v4
@@ -23,12 +23,8 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
     - name: Publish Test Resource
-      run: dotnet publish --use-current-runtime
+      run: dotnet publish --use-current-runtime -f ${{ matrix.target}}
     - name: Test (fail)
       run: dotnet run --project Runner -- load; echo $?
       continue-on-error: true
