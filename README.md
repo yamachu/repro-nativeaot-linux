@@ -26,3 +26,5 @@ Run on Linux
 1. dotnet publish --use-current-runtime -f net8.0
 2. dotnet run --project Runner
 3. Observe the segmentation fault
+
+For more detailed build and test instructions, please also refer to the workflow defined in `.github/workflows/dotnet.yml`.
