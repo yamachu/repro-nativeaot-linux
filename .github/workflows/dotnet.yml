@@ -25,7 +25,7 @@ jobs:
         dotnet-version: 9.x
     - name: Publish Test Resource
       run: dotnet publish --use-current-runtime -f ${{ matrix.target}}
-    - name: Test (fail)
+    - name: Test (fail on ubuntu)
       run: dotnet run --project Runner --framework net9.0 -- load; echo $?
       continue-on-error: true
     - name: Test (pass)
