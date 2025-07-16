@@ -26,7 +26,7 @@ jobs:
     - name: Publish Test Resource
       run: dotnet publish --use-current-runtime -f ${{ matrix.target}}
     - name: Test (fail)
-      run: dotnet run --project Runner -- load; echo $?
+      run: dotnet run --project Runner --framework net9.0 -- load; echo $?
       continue-on-error: true
     - name: Test (pass)
-      run: dotnet run --project Runner; echo $?
+      run: dotnet run --project Runner --framework net9.0; echo $?
