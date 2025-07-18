@@ -31,7 +31,9 @@ if (File.Exists(libPath))
         var result = runDelegate(1);
         Console.WriteLine($"Function result: {result}");
 
-        NativeLibrary.Free(handle);
+        // see: https://github.com/dotnet/runtime/issues/117726
+        // DONT FREE
+        // NativeLibrary.Free(handle);
     }
     catch (Exception ex)
     {
